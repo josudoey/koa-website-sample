@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title 
+    script(src=publicPath+"/sample.js?"+hash)
+  body
+    h1 My Site
+    p this is a sample project.
+    a(href="./any/path") try it
+    pre
+     |state:
+     |  publicPath: #{publicPath}
+     |  hash: #{hash}
