@@ -6,7 +6,7 @@ module.exports = function (prog) {
     .description('start a http service.')
     .action(function (opts) {
       const http = require('http')
-      const app = require('../app')(opts)
+      const app = require('../app/koa')(opts)
       const log4js = require('log4js')
       const Log = log4js.getLogger('server')
       const server = http.createServer(app.callback()).listen(opts.port)
