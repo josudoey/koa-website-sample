@@ -39,11 +39,14 @@ exports = module.exports = function (opts) {
       return logger
     }
   })
-  const stats = require('../../build/stats') || {hash: ''}
+  const stats = require('../../build/stats') || {
+    hash: '',
+    publicPath: '/bundle/'
+  }
   const hash = stats.hash.slice(0, 8)
   app.use(async function (ctx, next) {
     const webpack = {
-      publicPath: path.relative(path.dirname(ctx.originalUrl), '/bundle'),
+      publicPath: path.relative(path.dirname(ctx.originalUrl), stats.publicPath),
       hash: hash
     }
     ctx.state.webpack = webpack
